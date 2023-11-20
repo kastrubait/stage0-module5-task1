@@ -142,11 +142,5 @@ public class ArrayTasks {
         return arr;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {-1,-2, -3};
-        int[] marks = new ArrayTasks().getOnlyPositiveNumbers(arr);
-        for (int mark : marks) {
-            System.out.print(mark + " ");
-        }
-    }
+
 }
