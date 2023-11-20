@@ -1,5 +1,4 @@
 package com.epam.mjc.stage0;
-import java.util.Arrays;
 
 /**
  * Here are the tasks for working with the arrays.
@@ -28,7 +27,7 @@ public class ArrayTasks {
      */
     public int[] generateNumbers(int length) {
         int[] numbers = new int[length];
-        for(int i = 0; i<length + 1; i++){
+        for(int i = 0; i < length + 1; i++){
             numbers[i] = i;
         }
         return numbers;
@@ -101,14 +100,16 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        int[] positiveNumber = new int[] {};
-        int j = 0;
-        for(int i = 0; i < arr.length; i++) {
+        int[] temp = new int[arr.length];
+        int j = -1;
+        for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 0) {
-                positiveNumber[j] = arr[i];
                 j++;
+                temp[j] = arr[i];
             }
         }
+        int[] positiveNumber = new int[j + 1];
+        System.arraycopy(temp, 0, positiveNumber, 0, j + 1 );
         return positiveNumber;
     }
 
@@ -126,7 +127,6 @@ public class ArrayTasks {
         int pos;
         int[] temp;
         for (int i = 0; i < arr.length; i++) {
-//            Arrays.sort(arr[i]);
             pos = i;
             for (int j = i+1; j < arr.length; j++)
             {
@@ -140,5 +140,13 @@ public class ArrayTasks {
             arr[i] = temp;
         }
         return arr;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {-1,-2, -3};
+        int[] marks = new ArrayTasks().getOnlyPositiveNumbers(arr);
+        for (int mark : marks) {
+            System.out.print(mark + " ");
+        }
     }
 }
