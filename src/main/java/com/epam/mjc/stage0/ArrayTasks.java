@@ -129,8 +129,28 @@ public class ArrayTasks {
         int pos;
         int[] temp;
         for (int i = 0; i < arr.length; i++) {
+            int posArr;
+            int tempArr;
+            for (int a = 0; a < arr[i].length; a++)
+            {
+                posArr = a;
+                for (int b = a+1; b < arr[i].length; b++)
+                {
+                    if (arr[i][b] < arr[i][posArr])                  //find the index of the minimum element
+                    {
+                        posArr = b;
+                    }
+                }
+
+                tempArr = arr[i][posArr];            //swap the current element with the minimum element
+                arr[i][posArr] = arr[i][a];
+                arr[i][a] = tempArr;
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+
             pos = i;
-            for (int j = i+1; j < arr.length; j++)
+            for (int j = i + 1; j < arr.length; j++)
             {
                 if (arr[j].length < arr[pos].length)
                 {
@@ -143,4 +163,5 @@ public class ArrayTasks {
         }
         return arr;
     }
+
 }
