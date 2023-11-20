@@ -80,7 +80,7 @@ public class ArrayTasks {
      */
     public String[] reverseArray(String[] arr) {
         String[] reverse = new String[arr.length];
-        int j = 1;
+        int j = 0;
         for (int i = arr.length; i > 0 ; i--) {
             reverse[j] = arr[i];
             j++;
@@ -101,7 +101,7 @@ public class ArrayTasks {
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
         int[] positiveNumber = new int[] {};
-        int j = 1;
+        int j = 0;
         for(int i = 0; i <= arr.length; i++) {
             if (arr[i] > 0) {
                 positiveNumber[j] = arr[i];
@@ -122,8 +122,23 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        int[][] sortedArr = new int[][] {};
-        sortedArr = arr;
-        return sortedArr;
+        int pos;
+        int[] temp;
+        for (int i = 0; i < arr.length; i++)
+        {
+            pos = i;
+            for (int j = i+1; j < arr.length; j++)
+            {
+                if (arr[j].length < arr[pos].length)
+                {
+                    pos = j;
+                }
+            }
+
+            temp = arr[pos];
+            arr[pos] = arr[i];
+            arr[i] = temp;
+        }
+        return arr;
     }
 }
