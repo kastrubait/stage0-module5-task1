@@ -26,10 +26,12 @@ public class ArrayTasks {
      * length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
-        int[] numbers = new int[length];
+        int[] numbersTemp = new int[length + 1];
         for(int i = 0; i < length + 1; i++){
-            numbers[i] = i;
+            numbersTemp[i] = i;
         }
+        int[] numbers = new int[length];
+        System.arraycopy(numbersTemp, 1, numbers, 0, length );
         return numbers;
     }
 
@@ -141,6 +143,4 @@ public class ArrayTasks {
         }
         return arr;
     }
-
-
 }
