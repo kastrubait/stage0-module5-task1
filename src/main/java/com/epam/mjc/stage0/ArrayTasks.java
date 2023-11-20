@@ -1,4 +1,5 @@
 package com.epam.mjc.stage0;
+import java.util.Arrays;
 
 /**
  * Here are the tasks for working with the arrays.
@@ -27,7 +28,7 @@ public class ArrayTasks {
      */
     public int[] generateNumbers(int length) {
         int[] numbers = new int[length];
-        for(int i = 1; i<=length; i++){
+        for(int i = 0; i<length + 1; i++){
             numbers[i] = i;
         }
         return numbers;
@@ -81,7 +82,7 @@ public class ArrayTasks {
     public String[] reverseArray(String[] arr) {
         String[] reverse = new String[arr.length];
         int j = 0;
-        for (int i = arr.length; i > 0 ; i--) {
+        for (int i = arr.length -1; i >= 0 ; i--) {
             reverse[j] = arr[i];
             j++;
         }
@@ -102,7 +103,7 @@ public class ArrayTasks {
     public int[] getOnlyPositiveNumbers(int[] arr) {
         int[] positiveNumber = new int[] {};
         int j = 0;
-        for(int i = 0; i <= arr.length; i++) {
+        for(int i = 0; i < arr.length; i++) {
             if (arr[i] > 0) {
                 positiveNumber[j] = arr[i];
                 j++;
@@ -125,6 +126,7 @@ public class ArrayTasks {
         int pos;
         int[] temp;
         for (int i = 0; i < arr.length; i++)
+            Arrays.sort(arr[i]);
         {
             pos = i;
             for (int j = i+1; j < arr.length; j++)
@@ -134,7 +136,6 @@ public class ArrayTasks {
                     pos = j;
                 }
             }
-
             temp = arr[pos];
             arr[pos] = arr[i];
             arr[i] = temp;
