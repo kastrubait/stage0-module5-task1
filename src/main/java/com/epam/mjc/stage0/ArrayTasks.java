@@ -125,9 +125,8 @@ public class ArrayTasks {
     public int[][] sortRaggedArray(int[][] arr) {
         int pos;
         int[] temp;
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < arr.length; i++) {
             Arrays.sort(arr[i]);
-        {
             pos = i;
             for (int j = i+1; j < arr.length; j++)
             {
