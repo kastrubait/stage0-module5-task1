@@ -129,41 +129,94 @@ public class ArrayTasks {
 
         // sort start
         for (int i = 0; i < arr.length; i++) {
-            int posArr;
-            int tempArr;
-            for (int a = 0; a < arr[i].length; a++)
-            {
-                posArr = a;
-                for (int b = a+1; b < arr[i].length; b++)
-                {
-                    if (arr[i][b] < arr[i][posArr])
-                    {
-                        posArr = b;
-                    }
-                }
-                tempArr = arr[i][posArr];
-                arr[i][posArr] = arr[i][a];
-                arr[i][a] = tempArr;
-            }
+            bubbleSort(arr[i], arr[i].length);
+//            int posArr;
+//            int tempArr;
+//            for (int a = 0; a < arr[i].length; a++)
+//            {
+//                posArr = a;
+//                for (int b = a+1; b < arr[i].length; b++)
+//                {
+//                    if (arr[i][b] < arr[i][posArr])
+//                    {
+//                        posArr = b;
+//                    }
+//                }
+//                tempArr = arr[i][posArr];
+//                arr[i][posArr] = arr[i][a];
+//                arr[i][a] = tempArr;
+//            }
         } // sort end
 
-        int pos;
-        int[] temp;
-        for (int i = 0; i < arr.length; i++) {
-
-            pos = i;
-            for (int j = i + 1; j < arr.length; j++)
-            {
-                if (arr[j].length <= arr[pos].length)
-                {
-                    pos = j;
-                }
-            }
-            temp = arr[pos];
-            arr[pos] = arr[i];
-            arr[i] = temp;
-        }
+        bubbleSortLength(arr, arr.length);
+//        int pos;
+//        int[] temp;
+//        for (int i = 0; i < arr.length; i++) {
+//
+//            pos = i;
+//            for (int j = i + 1; j < arr.length; j++)
+//            {
+//                if (arr[j].length < arr[pos].length)
+//                {
+//                    pos = j;
+//                }
+//            }
+//            temp = arr[pos];
+//            arr[pos] = arr[i];
+//            arr[i] = temp;
+//        }
         return arr;
+    }
+
+    public static void main(String[] args) {
+        int[][] arr = {{-708, -233, -71, 352}, {-486, 365, 703, 845}, {-321}, {-975, 972}, {-231, -97, 600}};
+        int[][] marks = new ArrayTasks().sortRaggedArray(arr);
+        for (int[] mark : marks) {
+            for(int markItem : mark) {
+                System.out.print(markItem + " ");
+            }
+            System.out.print("; ");
+        }
+    }
+
+    static void bubbleSort(int arr[], int n)
+    {
+        if (n == 1)                     //passes are done
+        {
+            return;
+        }
+
+        for (int i=0; i<n-1; i++)       //iteration through unsorted elements
+        {
+            if (arr[i] > arr[i+1])      //check if the elements are in order
+            {                           //if not, swap them
+                int temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+        }
+
+        bubbleSort(arr, n-1);           //one pass done, proceed to the next
+    }
+
+    static void bubbleSortLength(int[][] arr, int n)
+    {
+        if (n == 1)                     //passes are done
+        {
+            return;
+        }
+
+        for (int i=0; i<n-1; i++)       //iteration through unsorted elements
+        {
+            if (arr[i].length > arr[i+1].length)      //check if the elements are in order
+            {                           //if not, swap them
+                int[] temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+        }
+
+        bubbleSortLength(arr, n-1);           //one pass done, proceed to the next
     }
 
 }
